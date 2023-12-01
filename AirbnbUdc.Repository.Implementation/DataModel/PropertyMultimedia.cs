@@ -14,13 +14,13 @@ namespace AirbnbUdc.Repository.Implementation.DataModel
     
     public partial class PropertyMultimedia
     {
-        public long Id { get; set; }
-        public Nullable<int> MultimediaName { get; set; }
+        public int Id { get; set; }
+        public string MultimediaName { get; set; }
         public string MultimediaLink { get; set; }
         public long PropertyId { get; set; }
-        public int MultimediaTypeId { get; set; }
+        public object MultimediaTypeId { get; set; }
     
-        public virtual MultimediaType MultimediaType { get; set; }
+        //public virtual MultimediaType MultimediaType { get; set; }
         public virtual Property Property { get; set; }
     }
 }
