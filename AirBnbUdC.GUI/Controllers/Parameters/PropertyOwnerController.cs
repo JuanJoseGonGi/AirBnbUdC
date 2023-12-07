@@ -1,114 +1,118 @@
-﻿using AirbnbUdc.Application.Implementation.Implementation.Parameters;
-using AirbnbUdC.Application.Contracts.Contracts.Parameters;
-using AirbnbUdC.Application.Contracts.DTO.Parameters;
-using AirBnbUdC.GUI.Mappers.Parameters;
-using AirBnbUdC.GUI.Models;
-using AirBnbUdC.GUI.Models.Parameters;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using AirbnbUdC.Application.Contracts.Contracts.Parameters;
+using AirbnbUdC.Application.Contracts.DTO.Parameters;
+using AirbnbUdc.Application.Implementation.Implementation.Parameters;
+using AirBnbUdC.GUI.Mappers.Parameters;
+using AirBnbUdC.GUI.Models;
+using AirBnbUdC.GUI.Models.Parameters;
 
 namespace AirBnbUdC.GUI.Controllers.Parameters
 {
-    public class MultimediaInmuebleController : Controller
+    public class PropertyOwnerController : Controller
     {
-        private IMultimediaInmuebleApplication app = new MultimediaInmuebleImplementationApplication();
+        private IPropertyOwnerApplication app = new PropertyOwnerImplementationApplication();
 
-        MultimediaInmuebleMapperGUI mapper = new MultimediaInmuebleMapperGUI();
+        PropertyOwnerMapperGUI mapper = new PropertyOwnerMapperGUI();
 
-        // GET: MultimediaInmuebleModels
+        // GET: PropertyOwnerModels
         public ActionResult Index(string filter = "")
         {
             var list = mapper.MapperT1toT2(app.GetAllRecords(filter));
             return View(list);
         }
 
-        // GET: MultimediaInmuebleModels/Details/5
+        // GET: PropertyOwnerModels/Details/5
         public ActionResult Details(int id)
         {
             if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MultimediaInmuebleModel MultimediaInmuebleModel = mapper.MapperT1toT2(app.GetRecord(id));
-            if (MultimediaInmuebleModel == null)
+            PropertyOwnerModel PropertyOwnerModel = mapper.MapperT1toT2(app.GetRecord(id));
+            if (PropertyOwnerModel == null)
             {
                 return HttpNotFound();
             }
-            return View(MultimediaInmuebleModel);
+            return View(PropertyOwnerModel);
         }
 
-        // GET: MultimediaInmuebleModels/Create
+        // GET: PropertyOwnerModels/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MultimediaInmuebleModels/Create
+        // POST: PropertyOwnerModels/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] MultimediaInmuebleModel MultimediaInmuebleModel)
+        public ActionResult Create([Bind(Include = "Id,Name")] PropertyOwnerModel PropertyOwnerModel)
         {
             if (ModelState.IsValid)
             {
-                MultimediaInmuebleDTO MultimediaInmuebleDTO = mapper.MapperT2toT1(MultimediaInmuebleModel);
-                app.CreateRecord(MultimediaInmuebleDTO);
+                PropertyOwnerDTO PropertyOwnerDTO = mapper.MapperT2toT1(PropertyOwnerModel);
+                app.CreateRecord(PropertyOwnerDTO);
                 return RedirectToAction("Index");
             }
 
-            return View(MultimediaInmuebleModel);
+            return View(PropertyOwnerModel);
         }
 
-        // GET: MultimediaInmuebleModels/Edit/5
+        // GET: PropertyOwnerModels/Edit/5
         public ActionResult Edit(int id)
         {
             if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MultimediaInmuebleModel MultimediaInmuebleModel = mapper.MapperT1toT2(app.GetRecord(id));
-            if (MultimediaInmuebleModel == null)
+            PropertyOwnerModel PropertyOwnerModel = mapper.MapperT1toT2(app.GetRecord(id));
+            if (PropertyOwnerModel == null)
             {
                 return HttpNotFound();
             }
-            return View(MultimediaInmuebleModel);
+            return View(PropertyOwnerModel);
         }
 
-        // POST: MultimediaInmuebleModels/Edit/5
+        // POST: PropertyOwnerModels/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] MultimediaInmuebleModel MultimediaInmuebleModel)
+        public ActionResult Edit([Bind(Include = "Id,Name")] PropertyOwnerModel PropertyOwnerModel)
         {
             if (ModelState.IsValid)
             {
-                MultimediaInmuebleDTO MultimediaInmuebleDTO = mapper.MapperT2toT1(MultimediaInmuebleModel);
-                app.UpdateRecord(MultimediaInmuebleDTO);
+                PropertyOwnerDTO PropertyOwnerDTO = mapper.MapperT2toT1(PropertyOwnerModel);
+                app.UpdateRecord(PropertyOwnerDTO);
                 return RedirectToAction("Index");
             }
-            return View(MultimediaInmuebleModel);
+            return View(PropertyOwnerModel);
         }
 
-        // GET: MultimediaInmuebleModels/Delete/5
+        // GET: PropertyOwnerModels/Delete/5
         public ActionResult Delete(int id)
         {
             if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MultimediaInmuebleModel MultimediaInmuebleModel = mapper.MapperT1toT2(app.GetRecord(id));
-            if (MultimediaInmuebleModel == null)
+            PropertyOwnerModel PropertyOwnerModel = mapper.MapperT1toT2(app.GetRecord(id));
+            if (PropertyOwnerModel == null)
             {
                 return HttpNotFound();
             }
-            return View(MultimediaInmuebleModel);
+            return View(PropertyOwnerModel);
         }
 
-        // POST: MultimediaInmuebleModels/Delete/5
+        // POST: PropertyOwnerModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

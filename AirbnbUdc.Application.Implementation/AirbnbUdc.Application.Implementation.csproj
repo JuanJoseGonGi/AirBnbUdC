@@ -43,11 +43,11 @@
   <ItemGroup>
     <Compile Include="Implementation\Parameters\CityImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\CountryImplementationApplication.cs" />
-    <Compile Include="Implementation\Parameters\MultimediaInmuebleImplementationApplication.cs" />
+    <Compile Include="Implementation\Parameters\PropertyOwnerImplementationAplication.cs" />
     <Compile Include="Mappers\MapperBaseApplication.cs" />
     <Compile Include="Mappers\Paremeters\CityMapperApplication.cs" />
     <Compile Include="Mappers\Paremeters\CountryMapperApplication.cs" />
-    <Compile Include="Mappers\Paremeters\MultimediaInmuebleMapperApplication.cs" />
+    <Compile Include="Mappers\Paremeters\PropertyOwnerMapperApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
