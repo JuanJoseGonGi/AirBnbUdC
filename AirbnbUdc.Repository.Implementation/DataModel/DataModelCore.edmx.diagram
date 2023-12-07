@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ae7738a13ec6418481e7a747bd43586f" Name="Diagram1">
+      <Diagram DiagramId="89947eed6b7b4621a60b2f19ccb09a2a" Name="Diagram1">
         <EntityTypeShape EntityType="Core_DBModel.City" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.Country" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.Customer" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.Feedback" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Core_DBModel.MultimediaType" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Core_DBModel.MultimediaType" Width="2.125" PointX="5.625" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.Property" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.PropertyMultimedia" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.PropertyOwner" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />

@@ -19,10 +19,12 @@ namespace AirbnbUdc.Repository.Implementation.Mappers.Parameters
 
         public override IEnumerable<CityDbModel> MapperT1toT2(IEnumerable<City> input)
         {
+            IList<CityDbModel> list = new List<CityDbModel>();
             foreach (var item in input)
             {
-                yield return MapperT1toT2(item);
+                list.Add(MapperT1toT2(item));
             }
+            return list;
         }
 
         public override City MapperT2toT1(CityDbModel input)
