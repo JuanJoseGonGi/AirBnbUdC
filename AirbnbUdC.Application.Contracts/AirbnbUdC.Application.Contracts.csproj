@@ -42,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\Parameters\ICityApplication.cs" />
+    <Compile Include="Contracts\Parameters\IMultimediaTypeApplication.cs" />
     <Compile Include="Contracts\Parameters\ICountryApplication.cs" />
     <Compile Include="Contracts\Parameters\IPropertyMultimediaAplication.cs" />
     <Compile Include="Contracts\Parameters\IPropertyOwnerApplication.cs" />
     <Compile Include="DTO\Parameters\CityDTO.cs" />
     <Compile Include="DTO\Parameters\PropertyMultimediaDTO.cs" />
     <Compile Include="DTO\Parameters\PropertyOwnerDTO.cs" />
+    <Compile Include="DTO\Parameters\MultimediaTypeDTO.cs" />
     <Compile Include="DTO\Parameters\CountryDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
