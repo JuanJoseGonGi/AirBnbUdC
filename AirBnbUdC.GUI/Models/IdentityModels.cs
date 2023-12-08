@@ -35,7 +35,6 @@ namespace AirBnbUdC.GUI.Models
 
         public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.CityModel> CityModels { get; set; }
 
-
-        
+        object placeHolderVariable;
     }
 }

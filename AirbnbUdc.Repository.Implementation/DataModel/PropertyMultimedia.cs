@@ -15,9 +15,9 @@ namespace AirbnbUdc.Repository.Implementation.DataModel
     public partial class PropertyMultimedia
     {
         public int Id { get; set; }
-        public string MultimediaName { get; set; }
+        public int MultimediaName { get; set; }
         public string MultimediaLink { get; set; }
-        public long PropertyId { get; set; }
+        public int PropertyId { get; set; }
         public object MultimediaTypeId { get; set; }
     
         //public virtual MultimediaType MultimediaType { get; set; }

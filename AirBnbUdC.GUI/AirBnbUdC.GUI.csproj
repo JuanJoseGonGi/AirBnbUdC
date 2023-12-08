@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Parameters\CityController.cs" />
     <Compile Include="Controllers\Parameters\CountryController.cs" />
+    <Compile Include="Controllers\Parameters\PropertyMultimediaController.cs" />
     <Compile Include="Controllers\Parameters\PropertyOwnerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,11 +183,15 @@
     <Compile Include="Mappers\MapperBaseGUI.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\CityMapperGUI.cs" />
+    <Compile Include="Mappers\Parameters\PropertyMultimediaMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\PropertyOwnerMapperGUI.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Parameters\CityModel.cs" />
+    <Compile Include="Models\Parameters\MultimediaType.cs" />
+    <Compile Include="Models\Parameters\Property.cs" />
+    <Compile Include="Models\Parameters\PropertyMultimediaModel.cs" />
     <Compile Include="Models\Parameters\PropertyOwnerModel.cs" />
     <Compile Include="Models\Parameters\CountryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,6 +284,11 @@
     <Content Include="Views\PropertyOwner\Details.cshtml" />
     <Content Include="Views\PropertyOwner\Edit.cshtml" />
     <Content Include="Views\PropertyOwner\Index.cshtml" />
+    <Content Include="Views\PropertyMultimedia\Create.cshtml" />
+    <Content Include="Views\PropertyMultimedia\Delete.cshtml" />
+    <Content Include="Views\PropertyMultimedia\Details.cshtml" />
+    <Content Include="Views\PropertyMultimedia\Edit.cshtml" />
+    <Content Include="Views\PropertyMultimedia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
