@@ -2,6 +2,7 @@
 using AirbnbUdc.Repository.Contracts.DbModel.Parameters;
 using AirbnbUdc.Repository.Implementation.DataModel;
 using AirbnbUdc.Repository.Implementation.Mappers.Parameters;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -75,17 +76,30 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
         /// <returns>Listado de registros con países</returns>
         public IEnumerable<CountryDbModel> GetAllRecords(string filter)
         {
+            try {
             using (Core_DBEntities db = new Core_DBEntities())
             {
                 var records = (
                     from c in db.Country
-                    where c.CountryName.Contains(filter)
+                    where string.IsNullOrEmpty(filter) || c.CountryName.Contains(filter)
                     select c
                     );
                 //var recordsLambda = db.Country.Where(x => x.CountryName.Contains(filter));
 
                 CountryMapperRepository mapper = new CountryMapperRepository();
                 return mapper.MapperT1toT2(records);
+            }
+            }catch(System.Exception ex)
+            {
+                // Manejar la excepción de manera más específica y registrar detalles.
+                Console.WriteLine("Error al obtener registros de country:");
+                Console.WriteLine($"Mensaje de error: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                // Puedes agregar más detalles según tus necesidades.
+
+                // Luego, puedes elegir lanzar la excepción nuevamente o devolver una lista vacía, dependiendo de tu lógica.
+                // throw; // Lanza la excepción nuevamente.
+                return new List<CountryDbModel>(); ; // Devuelve una lista vacía.
             }
         }
 

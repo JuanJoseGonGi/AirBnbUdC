@@ -17,8 +17,8 @@ namespace AirbnbUdc.Repository.Implementation.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Property()
         {
-            this.PropertyMultimedia = new HashSet<PropertyMultimedia>();
             this.Reservation = new HashSet<Reservation>();
+            this.PropertyMultimedia = new HashSet<PropertyMultimedia>();
         }
     
         public long Id { get; set; }
@@ -37,10 +37,10 @@ namespace AirbnbUdc.Repository.Implementation.DataModel
         public bool LaundryService { get; set; }
     
         public virtual City City { get; set; }
-        public virtual PropertyOwner PropertyOwner { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PropertyMultimedia> PropertyMultimedia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PropertyMultimedia> PropertyMultimedia { get; set; }
+        public virtual PropertyOwner PropertyOwner { get; set; }
     }
 }

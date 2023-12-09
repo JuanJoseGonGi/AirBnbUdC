@@ -3,7 +3,6 @@
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
-    <edmx:Diagrams>
       <Diagram DiagramId="89947eed6b7b4621a60b2f19ccb09a2a" Name="Diagram1">
         <EntityTypeShape EntityType="Core_DBModel.City" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.Country" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
@@ -14,14 +13,14 @@
         <EntityTypeShape EntityType="Core_DBModel.PropertyMultimedia" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.PropertyOwner" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Core_DBModel.Reservation" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
-        <AssociationConnector Association="Core_DBModel.FK__City__CountryId__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="Core_DBModel.FK_CityCountryId_267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="Core_DBModel.fk_cityId_property" ManuallyRouted="false" />
         <AssociationConnector Association="Core_DBModel.fk_CustomerId_Reservation" ManuallyRouted="false" />
-        <AssociationConnector Association="Core_DBModel.FK__Feedback__Reserv__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="Core_DBModel.FK__PropertyM__Multi__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="Core_DBModel.FK__Property__OwnerI__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="Core_DBModel.FK__PropertyM__Prope__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="Core_DBModel.FK_FeedbackReserv_35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="Core_DBModel.FK_PropertyMMulti_3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="Core_DBModel.fk_PropertyId_Reservation" ManuallyRouted="false" />
+        <AssociationConnector Association="Core_DBModel.FK_PropertyMPrope_3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="Core_DBModel.FK_PropertyOwnerI_30F848ED" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

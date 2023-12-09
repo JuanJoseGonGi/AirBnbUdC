@@ -6,27 +6,30 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
 {
-    public class CityImplementationRepository : ICityRepository
+    
+    public class PropertyOwnerImplementationRepository : IPropertyOwnerRepository
     {
         /// <summary>
-        /// Método para crear un registro de City en la base de datos
+        /// Método para crear un registro de PropertyOwner en la base de datos
         /// </summary>
         /// <param name="record">Registro a guardar</param>
         /// <returns>El registro guardado con id cuando se guarda o sin Id cuando no. O una excepción</returns>
-        public CityDbModel CreateRecord(CityDbModel record)
+        public PropertyOwnerDbModel CreateRecord(PropertyOwnerDbModel record)
         {
             try
             {
                 using (Core_DBEntities db = new Core_DBEntities())
                 {
-                    if (db.City.Any(x => x.CityName.Equals(record.Name)))
+                    if (!db.PropertyOwner.Any(x => x.Id.Equals(record.Id)))
                     {
-                        CityMapperRepository mapper = new CityMapperRepository();
-                        City dbRecord = mapper.MapperT2toT1(record);
-                        db.City.Add(dbRecord);
+                        PropertyOwnerMapperRepository mapper = new PropertyOwnerMapperRepository();
+                        PropertyOwner dbRecord = mapper.MapperT2toT1(record);
+                        db.PropertyOwner.Add(dbRecord);
                         db.SaveChanges();
                         record.Id = dbRecord.Id;
                     }
@@ -40,7 +43,7 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
         }
 
         /// <summary>
-        /// Método para eliminar un registro de City en la base de datos
+        /// Método para eliminar un registro de PropertyOwner en la base de datos
         /// </summary>
         /// <param name="recordId">Id del registro a eliminar</param>
         /// <returns>1 cuando se elimina, 0 cuando no existe, o excepción</returns>
@@ -50,10 +53,10 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
             {
                 using (Core_DBEntities db = new Core_DBEntities())
                 {
-                    City record = db.City.FirstOrDefault(x => x.Id == recordId);
+                    PropertyOwner record = db.PropertyOwner.FirstOrDefault(x => x.Id == recordId);
                     if (record != null)
                     {
-                        db.City.Remove(record);
+                        db.PropertyOwner.Remove(record);
                         db.SaveChanges();
                         return 1;
                     }
@@ -71,82 +74,64 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
         }
 
         /// <summary>
-        /// Método para obtener todos los registros de City en la base de datos
+        /// Método para obtener todos los registros de PropertyOwner en la base de datos
         /// </summary>
         /// <returns>Listado de registros con países</returns>
-        public IEnumerable<CityDbModel> GetAllRecords(string filter)
+        public IEnumerable<PropertyOwnerDbModel> GetAllRecords(string filter)
         {
             try
             {
                 using (Core_DBEntities db = new Core_DBEntities())
                 {
                     var records = (
-                        from c in db.City
-                        where string.IsNullOrEmpty(filter) || c.CityName.Contains(filter)
+                        from c in db.PropertyOwner
+                        where string.IsNullOrEmpty(filter) || c.FamilyName.Contains(filter)
                         select c
                     );
 
-                    CityMapperRepository mapper = new CityMapperRepository();
+                    PropertyOwnerMapperRepository mapper = new PropertyOwnerMapperRepository();
                     return mapper.MapperT1toT2(records);
                 }
             }
             catch (Exception ex)
             {
                 // Manejar la excepción de manera más específica y registrar detalles.
-                Console.WriteLine("Error al obtener registros de City:");
+                Console.WriteLine("Error al obtener registros de PropertyOwner:");
                 Console.WriteLine($"Mensaje de error: {ex.Message}");
                 Console.WriteLine($"StackTrace: {ex.StackTrace}");
                 // Puedes agregar más detalles según tus necesidades.
 
                 // Luego, puedes elegir lanzar la excepción nuevamente o devolver una lista vacía, dependiendo de tu lógica.
                 // throw; // Lanza la excepción nuevamente.
-                return Enumerable.Empty<CityDbModel>(); // Devuelve una lista vacía.
+                return Enumerable.Empty<PropertyOwnerDbModel>(); // Devuelve una lista vacía.
             }
         }
 
-        /// <summary>
-        /// Método para obtener todos los registros de City en la base de datos por Id de país
-        /// </summary>
-        /// <param name="countryId">Id del país</param>
-        /// <returns>Lista de ciudades</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public IEnumerable<CityDbModel> GetAllRecordsByCountryId(int countryId)
+        public PropertyOwnerDbModel GetRecord(int recordId)
         {
             using (Core_DBEntities db = new Core_DBEntities())
             {
-                var records = (from c in db.City
-                               where c.CountryId == countryId
-                               select c);
-                CityMapperRepository mapper = new CityMapperRepository();
-                return mapper.MapperT1toT2(records);
-            }
-        }
+                var record = db.PropertyOwner.Find(recordId);
 
-        public CityDbModel GetRecord(int recordId)
-        {
-            using (Core_DBEntities db = new Core_DBEntities())
-            {
-                var record = db.City.Find(recordId);
-
-                CityMapperRepository mapper = new CityMapperRepository();
+                PropertyOwnerMapperRepository mapper = new PropertyOwnerMapperRepository();
                 return mapper.MapperT1toT2(record);
             }
         }
 
         /// <summary>
-        /// Método para actualizar un registro de City en la base de datos
+        /// Método para actualizar un registro de PropertyOwner en la base de datos
         /// </summary>
         /// <param name="record">Registro con nuevos datos</param>
         /// <returns>1 cuando se actualiza, 0 cuando no se actualiza o una excepciòn</returns>
-        public int UpdateRecord(CityDbModel record)
+        public int UpdateRecord(PropertyOwnerDbModel record)
         {
             try
             {
                 using (Core_DBEntities db = new Core_DBEntities())
                 {
-                    CityMapperRepository mapper = new CityMapperRepository();
-                    City dbRecord = mapper.MapperT2toT1(record);
-                    db.City.Attach(dbRecord);
+                    PropertyOwnerMapperRepository mapper = new PropertyOwnerMapperRepository();
+                    PropertyOwner dbRecord = mapper.MapperT2toT1(record);
+                    db.PropertyOwner.Attach(dbRecord);
                     db.Entry(dbRecord).State = EntityState.Modified;
                     return db.SaveChanges();
                 }
