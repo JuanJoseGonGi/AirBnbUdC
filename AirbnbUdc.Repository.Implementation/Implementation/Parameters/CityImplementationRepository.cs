@@ -2,6 +2,7 @@
 using AirbnbUdc.Repository.Contracts.DbModel.Parameters;
 using AirbnbUdc.Repository.Implementation.DataModel;
 using AirbnbUdc.Repository.Implementation.Mappers.Parameters;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -75,17 +76,31 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
         /// <returns>Listado de registros con países</returns>
         public IEnumerable<CityDbModel> GetAllRecords(string filter)
         {
-            using (Core_DBEntities db = new Core_DBEntities())
+            try
             {
-                var records = (
-                    from c in db.City
-                    where c.CityName.Contains(filter)
-                    select c
+                using (Core_DBEntities db = new Core_DBEntities())
+                {
+                    var records = (
+                        from c in db.City
+                        where string.IsNullOrEmpty(filter) || c.CityName.Contains(filter)
+                        select c
                     );
-                //var recordsLambda = db.City.Where(x => x.CityName.Contains(filter));
 
-                CityMapperRepository mapper = new CityMapperRepository();
-                return mapper.MapperT1toT2(records);
+                    CityMapperRepository mapper = new CityMapperRepository();
+                    return mapper.MapperT1toT2(records);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción de manera más específica y registrar detalles.
+                Console.WriteLine("Error al obtener registros de City:");
+                Console.WriteLine($"Mensaje de error: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                // Puedes agregar más detalles según tus necesidades.
+
+                // Luego, puedes elegir lanzar la excepción nuevamente o devolver una lista vacía, dependiendo de tu lógica.
+                // throw; // Lanza la excepción nuevamente.
+                return Enumerable.Empty<CityDbModel>(); // Devuelve una lista vacía.
             }
         }
 

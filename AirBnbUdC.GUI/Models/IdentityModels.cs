@@ -21,7 +21,7 @@ namespace AirBnbUdC.GUI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection994", throwIfV1Schema: false)
         {
         }
 
@@ -30,11 +30,12 @@ namespace AirBnbUdC.GUI.Models
             return new ApplicationDbContext();
         }
 
-        object placeHolderVariable;
         public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.CountryModel> CountryModels { get; set; }
 
         public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.CityModel> CityModels { get; set; }
 
         public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.MultimediaTypeModel> MultimediaTypeModels { get; set; }
+
+        public System.Data.Entity.DbSet<AirBnbUdC.GUI.Models.Parameters.CustomerModel> CustomerModels { get; set; }
     }
 }
