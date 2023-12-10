@@ -52,12 +52,30 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleInjector, Version=5.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.5.4.2\lib\net461\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.5.0.0\lib\net45\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.5.0.0\lib\net45\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -110,6 +128,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -169,14 +190,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Parameters\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Parameters\CityController.cs" />
     <Compile Include="Controllers\Parameters\CountryController.cs" />
     <Compile Include="Controllers\Parameters\PropertyMultimediaController.cs" />
     <Compile Include="Controllers\Parameters\PropertyOwnerController.cs" />
+    <Compile Include="Controllers\Parameters\MultimediaTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,6 +208,7 @@
     <Compile Include="Mappers\Parameters\CityMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\PropertyMultimediaMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\PropertyOwnerMapperGUI.cs" />
+    <Compile Include="Mappers\Parameters\CustomerMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\MultimediaTypeMapperGUI.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperGUI.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -194,6 +219,7 @@
     <Compile Include="Models\Parameters\Property.cs" />
     <Compile Include="Models\Parameters\PropertyMultimediaModel.cs" />
     <Compile Include="Models\Parameters\PropertyOwnerModel.cs" />
+    <Compile Include="Models\Parameters\CustomerModel.cs" />
     <Compile Include="Models\Parameters\MultimediaTypeModel.cs" />
     <Compile Include="Models\Parameters\CountryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,6 +322,11 @@
     <Content Include="Views\MultimediaType\Details.cshtml" />
     <Content Include="Views\MultimediaType\Edit.cshtml" />
     <Content Include="Views\MultimediaType\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,12 +363,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirbnbUdC.Application.Contracts\AirbnbUdC.Application.Contracts.csproj">
-      <Project>{48c74c74-df29-4f00-950c-19bdda103c0c}</Project>
+      <Project>{48C74C74-DF29-4F00-950C-19BDDA103C0C}</Project>
       <Name>AirbnbUdC.Application.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\AirbnbUdc.Application.Implementation\AirbnbUdc.Application.Implementation.csproj">
       <Project>{BA0B6C94-A1EA-4ABA-A2A4-9C1425A099DC}</Project>
       <Name>AirbnbUdc.Application.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AirbnbUdc.Repository.Contracts\AirbnbUdc.Repository.Contracts.csproj">
+      <Project>{6d5f4717-d517-449b-bb12-43ce2ea4101b}</Project>
+      <Name>AirbnbUdc.Repository.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AirbnbUdc.Repository.Implementation\AirbnbUdc.Repository.Implementation.csproj">
+      <Project>{8754ba4b-c5bc-43c3-89be-174c38922664}</Project>
+      <Name>AirbnbUdc.Repository.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -2,6 +2,7 @@
 using AirbnbUdc.Repository.Contracts.DbModel.Parameters;
 using AirbnbUdc.Repository.Implementation.DataModel;
 using AirbnbUdc.Repository.Implementation.Mappers.Parameters;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -31,9 +32,13 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
                     }
                 }
             }
-            catch (System.Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                // Manejar la excepción de manera más específica y registrar detalles.
+                // Manejar la excepción de manera más específica y registrar detalles.
+                Console.WriteLine("Error al obtener registros de PropertyMultimedia:");
+                Console.WriteLine($"Mensaje de error: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
             }
             return record;
         }
@@ -62,10 +67,9 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
                     }
                 }
             }
-            catch (System.Exception e)
+            catch (System.Exception ex)
             {
-                // porque se tiene como llave foránea en otra tabla
-                throw e;
+                throw ex;
             }
         }
 
@@ -98,6 +102,11 @@ namespace AirbnbUdc.Repository.Implementation.Implementation.Parameters
                 MultimediaTypeMapperRepository mapper = new MultimediaTypeMapperRepository();
                 return mapper.MapperT1toT2(record);
             }
+        }
+
+        public MultimediaTypeDbModel GetRecord(long recordId)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
