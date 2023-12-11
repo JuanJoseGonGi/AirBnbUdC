@@ -8,7 +8,7 @@ namespace AirbnbUdC.Application.Contracts.DTO.Parameters
 {
     public class PropertyOwnerDTO
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string FirstName { get; set; }
         public string FamilyName { get; set; }
         public string Email { get; set; }

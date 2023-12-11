@@ -12,11 +12,11 @@ namespace AirBnbUdC.GUI.Models.Parameters
     {
         [DisplayName("Id")]
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [DisplayName("numero inmueble")]
         [Required(ErrorMessage = "El numero de inmueble es requerido")]
-        public int MultimediaName { get; set; }
+        public Nullable <int> MultimediaName { get; set; }
 
         [DisplayName("Url")]
         [Required(ErrorMessage = "La url es requerida")]
@@ -26,12 +26,12 @@ namespace AirBnbUdC.GUI.Models.Parameters
         [DisplayName("Id Propiedad")]
         [Required(ErrorMessage = "El id de la propiedad es requerido")]
         //[ForeignKey("Property")]
-        public int PropertyId { get; set; }
+        public long PropertyId { get; set; }
 
         [DisplayName("Id Tipo Multimedia")]
         [Required(ErrorMessage = "El id del tipo de multimedia es requerido")]
         //[ForeignKey("MultimediaType")]
-        public object MultimediaTypeId { get; set; }
+        public int MultimediaTypeId { get; set; }
 
 
         // Propiedad de navegación para representar la relación con la entidad Property

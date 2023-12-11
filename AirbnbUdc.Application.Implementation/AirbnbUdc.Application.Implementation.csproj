@@ -42,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\Parameters\CityImplementationApplication.cs" />
+    <Compile Include="Implementation\Parameters\CustomerImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\MultimediaTypeImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\CountryImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\PropertyMultimediaImplementationAplication.cs" />
     <Compile Include="Implementation\Parameters\PropertyOwnerImplementationAplication.cs" />
     <Compile Include="Mappers\MapperBaseApplication.cs" />
     <Compile Include="Mappers\Paremeters\CityMapperApplication.cs" />
+    <Compile Include="Mappers\Paremeters\CustomerMapperApplication.cs" />
     <Compile Include="Mappers\Paremeters\MultimediaTypeMapperApplication.cs" />
     <Compile Include="Mappers\Paremeters\CountryMapperApplication.cs" />
     <Compile Include="Mappers\Paremeters\PropertyMultimediaMapperAplication.cs" />
@@ -56,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirbnbUdC.Application.Contracts\AirbnbUdC.Application.Contracts.csproj">
-      <Project>{48c74c74-df29-4f00-950c-19bdda103c0c}</Project>
+      <Project>{48C74C74-DF29-4F00-950C-19BDDA103C0C}</Project>
       <Name>AirbnbUdC.Application.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\AirbnbUdc.Repository.Contracts\AirbnbUdc.Repository.Contracts.csproj">

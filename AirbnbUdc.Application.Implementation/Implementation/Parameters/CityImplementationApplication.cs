@@ -4,7 +4,6 @@ using AirbnbUdc.Repository.Contracts.DbModel.Parameters;
 using AirbnbUdc.Repository.Implementation.Implementation.Parameters;
 using AirbnbUdC.Application.Contracts.Contracts.Parameters;
 using AirbnbUdC.Application.Contracts.DTO.Parameters;
-using System;
 using System.Collections.Generic;
 
 namespace AirbnbUdc.Application.Implementation.Implementation.Parameters
